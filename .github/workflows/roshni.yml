@@ -8,14 +8,18 @@ jobs:
  build-and-push:
   runs-on: ubuntu-latest
   steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4  
+    - uses: actions/checkout@v4  
       
-    - name: print welcome message
-      run: echo "Starting CI build process on Ubuntu!"
+    - name: initialize Repo
+      run: | 
+        echo "Starting CI build process on Ubuntu!" 
+        uname -a
     
-    - name: run test suite
+    - name: Check the docker installtion 
       run: |
-       echo "Running unit tests..." 
-       echo ""All tests passed successfully!
-     
+       docker 
+       docker images
+
+    - name: Run Docker Container
+      run : |
+       docker run hello-world
